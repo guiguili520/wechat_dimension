@@ -1,0 +1,19 @@
+<view class="bg">
+  <navbar />
+  <swiper style="height:400rpx" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" duration="{{500}}">
+    <block wx:for="{{imgUrls}}" wx:key="index" wx:for-index="index">
+      <swiper-item>
+        <image class="swiper-image" src="{{item.url}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="login-container">
+    <view class="login-container__children" wx:for="{{10}}" wx:for-index="index" wx:key="index">
+      <iconfont name="zaoxingnvhai" size="40"/>
+      动漫
+    </view>
+  </view>
+  <scroll-view class="login-scroll" scroll-x="true">
+    <view class="{{tabIndex === index ? 'login-scroll__blue' : ''}}" wx:for="{{10}}" wx:key="index" wx:for-index="index" data-index="{{index}}" bindtap="switchTab">测试</view>
+  </scroll-view>
+</view>

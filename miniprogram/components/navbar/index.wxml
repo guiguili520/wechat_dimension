@@ -1,0 +1,18 @@
+<view class="navbar" style="height: {{height + 'px'}}">
+  <view class="navbar-title">
+    <icon class="iconfont icon-xiangyou navbar-title__left"/>
+    <view class="navbar-title__text">{{title}}</view>
+  </view>
+</view>
+<!-- <view>
+  <view class='nav bg-white' style='height:{{height + px}}'>
+    <view class='nav-title'>
+      首页
+      <image src='' mode='aspectFit' class='back'></image> 
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navBarHeight}}px)' scroll-y >
+    <view class='hidden'>
+    </view>
+  </scroll-view>
+</view> -->

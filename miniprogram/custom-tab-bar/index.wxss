@@ -1,0 +1,29 @@
+.custom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 100rpx; */
+  border-top: 2rpx solid #e1e1e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10rpx;
+}
+.custom-tabar {
+  width: 150rpx;
+  display: flex;
+  /* text-align: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.custom-tabar__size {
+  font-size: 26rpx;
+  font-weight: 500;
+  margin-top: 10rpx;
+}
+.custom-tabar__image {
+  width: 50rpx;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

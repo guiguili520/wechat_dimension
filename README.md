@@ -1,27 +1,12 @@
-# sg-webgis
-多规合一Webgis项目
+# 云开发 quickstart
 
-## 项目基于 vue-cli3
+这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
 
-项目需要首先需要全局安装 vue-cli3
-```cmd
-npm install -g @vue/cli
-```
- 
+- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
+- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
+- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
 
-## start
-```cmd
-npm run serve
-```
-## build
-```cmd
-npm run  build
-```
-并且找到 /dist文件夹
+## 参考文档
 
-## 代理说明
-需要代理后端服务器
-```cmd
-    http://192.168.10.91:9080
-```
-## 首页地址
+- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+

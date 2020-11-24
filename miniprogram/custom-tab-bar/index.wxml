@@ -1,0 +1,8 @@
+<cover-view class="custom">
+  <cover-view class="custom-tabar" wx:for="{{list}}" wx:for-index="index" wx:key="index" data-index="{{index}}" bind:tap="switchTab">
+    <cover-image class="custom-tabar__image" src="{{index === selectIndex ? item.selectIcon : item.iconPath}}"></cover-image>
+    <cover-view class="custom-tabar__size" style="color: {{index === selectIndex ? item.selectCss : item.defaultCss}}">
+      {{item.text}}
+    </cover-view>
+  </cover-view>
+</cover-view>
