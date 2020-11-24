@@ -35,7 +35,7 @@
       "text": "首页"
     }, {
       "pagePath": "pages/login/index",
-      "text": "我的"
+      "text": "我的1"
     }]
   },
   "usingComponents": {

@@ -5,15 +5,24 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  // let {a, b} = event;
+  console.log(event, context)
+  return switchDatabase(event.database)
+    // .then(res => {
+    //   // console.log(res)
+    //   return res
+    // })
+}
 
-  // return {
-  //  sum: a * b
-  // }
+async function switchDatabase(database) {
+  switch(database) {
+    case "swiper-image":
+      return await queryData(database)
+    case "home_tablist":
+      return await queryData(database)
+  }
+}
+
+async function queryData(database) {
   let db = cloud.database();
-  console.log(db.collection('swiper-image').get())
-  return db.collection('swiper-image').get() || [];
-  // return {
-  //   data
-  // }
+  return await db.collection(database).get() || [];
 }

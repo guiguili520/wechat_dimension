@@ -2,35 +2,47 @@
 Page({
   data: {
     imgUrls: [],
-    tabIndex: 0
+    tablist: [],
+    tabIndex: 0,
+    tabId: "",
+    contentList: []
   },
   switchTab(e) {
+    let dataset = e.currentTarget.dataset
     this.setData({
-      tabIndex: e.currentTarget.dataset.index
+      tabIndex: dataset.index,
+      tabId: dataset.id,
+      contentList: this.data.tablist[dataset.index].module.children
     })
   },
-  //options(Object)
-  onLoad: function(options){
-    // wx.cloud.callFunction({
-    //   // 需调用的云函数名
-    //   name: 'num',
-    //   // 传给云函数的参数
-    //   data: {
-    //     a: 12,
-    //     b: 19,
-    //   },
-    //   // 成功回调
-    //   complete: console.log
-    // })
-    // 当然 promise 方式也是支持的
+  getSwiperImgArr() {
     wx.cloud.callFunction({
       name: 'sum',
+      data: {
+        database: 'swiper-image'
+      }
     }).then(res => {
-      console.log(res.result.data)
       this.setData({
         imgUrls: res.result.data || []
       })
     })
+  },
+  getTabList() {
+    wx.cloud.callFunction({
+      name: 'sum',
+      data: {
+        database: 'home_tablist'
+      }
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        tablist: res.result.data || [],
+        contentList: res.result.data.length && res.result.data[0].module.children.length ? res.result.data[0].module.children : []
+      })
+    })
+  },
+  onLoad: function(options){
+    Promise.all([this.getSwiperImgArr(), this.getTabList()])
   },
   onReady: function(){
     

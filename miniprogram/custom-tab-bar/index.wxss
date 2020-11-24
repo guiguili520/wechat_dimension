@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: space-around;
   padding: 10rpx;
+  z-index: 99999;
+  background: #fff;
 }
 .custom-tabar {
   width: 150rpx;

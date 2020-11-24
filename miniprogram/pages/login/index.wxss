@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding: 15rpx 30rpx;
+  padding: 0 30rpx 15rpx;
   justify-content: space-between;
   margin-top: 4rpx;
 }
@@ -22,6 +22,9 @@
   background: #fff;
   /* flex-wrap: wrap; */
   align-content: space-around;
+  margin-top: 15rpx;
+  border-radius: 16rpx;
+  padding: 3rpx 0;
 }
 .login-scroll {
   /* height: 60rpx; */
@@ -41,4 +44,48 @@
 .login-scroll__blue {
   color: #4876FF !important;
   border-bottom: 4rpx solid #4876FF;
+}
+.login-tab__list {
+  width: 100%;
+  background: #fff;
+}
+.login-tab__list--content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 2rpx solid #e1e1e1;
+}
+.login-userinfo__img {
+  border-radius: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+.login-userinfo__value {
+  color: #8E8E8E;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+.login-userinfo__value text:first-child {
+  margin-bottom: 16rpx;
+}
+.login-userinfo {
+  display: flex;
+  /* flex-direction: column; */
+  padding: 20rpx;
+
+}
+.login-tab__list--footer {
+  background: #fff;
+  padding: 20rpx;
+  color: #333;
+  font-size: 26rpx;
+}
+.login-tab__list--image {
+  width: 160rpx;
+  height: 100rpx;
+  margin-right: 6rpx;
 }
