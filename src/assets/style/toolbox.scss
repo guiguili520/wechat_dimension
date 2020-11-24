@@ -1,0 +1,44 @@
+.toolBoxBar{
+    z-index:150;
+    position:absolute;
+    top:28px;
+    right:90px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px  #ccc;
+    color: #6e6e6e;
+    .tool-index{
+        width: 115px;
+        height: 25px;
+        padding-left: 18px;
+        line-height: 23px;
+    }
+    .tool-index span:hover{
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        height: 100%;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    ul{
+        margin-block-end: 3px;
+        li{
+            line-height: 26px;
+            .item{
+                padding-left: 18px;
+            }
+        }
+        li:hover{
+            background-color: #dfdfdf;
+            cursor: pointer;
+        }
+    }
+}
+.moduleItemBox{
+    width: 0;
+    height: 0;
+    overflow: auto;
+}

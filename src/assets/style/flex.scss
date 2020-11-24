@@ -1,0 +1,211 @@
+/* 以下设计及理念参考了阮一峰老师教程http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool，以及强锅锅提供的设计思路，感谢
+flex布局支持谷歌21+、opera12.1+、firefox22+、safari6.1+、ie10+等版本浏览器
+注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+使用flex布局的元素称为flex容器，以下简称容器，他的所有子元素自动成为容器成员，称为flex项目成员，以下简称项目
+容器属性包括以下六条：
+flex-direction       //定义主轴方向（项目排列方向）row | row-reverse | column | column-reverse;
+flex-wrap            //默认情况下，项目都排在一条线（又称"轴线"）上,如果一条轴线排不下，如何换行  nowrap | wrap | wrap-reverse;
+flex-flow            //flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap  <flex-direction> || <flex-wrap>;
+justify-content      //定义了项目在主轴上的对齐方式。  flex-start | flex-end | center | space-between | space-around;
+align-items          //定义项目在交叉轴上如何对齐      flex-start | flex-end | center | baseline | stretch;
+align-content        //定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+项目属性包含以下六条：
+order                //定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+flex-grow            //定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+flex-shrink          //定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+flex-basis           //定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
+flex                 //flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+align-self           //允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。 */
+
+/*定义为flexbox的"父元素,任何一个容器都可以指定为 Flex 布局。"*/
+.flex{
+  display: -webkit-flex;
+  display: flex;
+}
+
+//行内元素也可以使用 Flex 布局。
+.flex-inline{
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+//定义主轴方向
+
+/*指定主轴的伸缩流方向是纵向的（起点在上边，默认）*/
+.flex-col{
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+/*指定主轴的伸缩流方向是纵向的（起点在下边边）*/
+.flex-col-rev{
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+/*指定主轴的伸缩流方向是横向的（起点在左边，默认）*/
+.flex-row{
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+/*指定主轴的伸缩流方向是横向的（起点在右边）*/
+.flex-row-rev{
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+//定义如果一条轴线排不下，如何换行
+
+// 默认不换行
+.flex-nowrap{
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+/*换行，第一行在上方*/
+.flex-wrap{
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+/*换行，第一行在下方*/
+.flex-wrap-reverse{
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+//定义主轴的对齐方式
+
+/*左对齐*/
+.flex-main-start{
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+/*右对齐*/
+.flex-main-center{
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+/*居中*/
+.flex-main-end{
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+/*两端对齐*/
+.flex-main-between{
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+/*每个项目两侧的间隔相等*/
+.flex-main-around{
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+/*定义交叉轴对齐方式*/
+// 交叉轴的起点对齐
+.flex-cross-start{
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+//交叉轴的终点对齐
+.flex-cross-end{
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+//交叉轴的中点对齐
+.flex-cross-center{
+  -webkit-align-items: center;
+  align-items: center;
+}
+//项目的第一行文字的基线对齐
+.flex-cross-baseline{
+  -webkit-align-items: baseline;
+  align-items: baseline;
+}
+//如果项目未设置高度或设为auto，将占满整个容器的高度。
+.flex-cross-stretch{
+  -webkit-align-items: stretch;
+  align-items: stretch;
+}
+
+//定义常用布局
+
+/*垂直居中*/
+.flex-center{
+  /*子元素沿主轴对齐方式居中*/
+  -webkit-justify-content: center;
+  justify-content: center;
+  /*子元素沿交叉轴对齐方式居中*/
+  -webkit-align-items: center;
+  align-items: center;
+
+}
+
+
+//flex-grow, flex-shrink 和 flex-basis的简写,默认0 1 auto
+//建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值
+/*给"子元素"赋予自由伸缩的能力*/
+.flex-item{
+  -webkit-flex: 1;
+  flex: 1;
+  /*在旧版的规范中，使用比例伸缩布局时，子元素的内容长短不同会导致无法“等分”，这个时候，我们需要给子元素设置一个“width:0%”来解决问题*/
+  /*不要给flexbox里的子元素设置“margin:auto”的属性，在部分安卓机下，它会导致该元素的宽度撑开到100%占位*/
+  width: 0%;
+}
+
+//项目占据主轴空间，常用尺寸
+.flex-col-100{
+  flex: 0 0 100%;
+}
+.flex-col-90{
+  flex: 0 0 90%;
+}
+.flex-col-80{
+  flex: 0 0 80%;
+}
+.flex-col-70{
+  flex: 0 0 70%;
+}
+.flex-col-60{
+  flex: 0 0 60%;
+}
+.flex-col-50{
+  flex: 0 0 50%;
+}
+.flex-col-40{
+  flex: 0 0 40%;
+}
+.flex-col-33{
+  flex: 0 0 33.3333%;
+}
+.flex-col-30{
+  flex: 0 0 30%;
+}
+.flex-col-25{
+  flex: 0 0 25%;
+}
+.flex-col-20{
+  flex: 0 0 20%;
+}
+.flex-col-10{
+  flex: 0 0 10%;
+}
+
+
+/*单个项目有与其他项目不一样的对齐方式*/
+.flex-item-start{
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-item-center{
+  -webkit-align-self: center;
+  align-self: center;
+}
+.flex-item-end{
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+.flex-jcsb{
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
