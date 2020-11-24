@@ -1,7 +1,11 @@
 # 小程序架构
 ````javascript
---- cloudfunctions    云函数
---- miniprogram     程序代码
+    --- cloudfunctions    云函数
+    |
+    |---- xxx  每一个文件夹对应一个云函数, 每个云函数都有一个js脚本文件, 一个config.json配置文件, 一个package.json的npm包文件, 每个云函数调试都需要 npm install 下载依赖文件。
+    |---- xxx .......
+    |
+    --- miniprogram     程序代码
     |
     |__ assets  静态资源目录
     |
