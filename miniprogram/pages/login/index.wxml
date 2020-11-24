@@ -29,7 +29,7 @@
       </view>
       <view class="login-tab__list--footer">
         <block wx:if="{{item.imgArr.length > 0}}">
-          <image class="login-tab__list--image" mode="aspectFit" wx:for="{{item.imgArr}}" src="{{item}}" />
+          <image bindtap="priviewImg" data-item="{{item}}" class="login-tab__list--image" mode="aspectFit" wx:for="{{item.imgArr}}" src="{{item}}" />
         </block>
         <view>{{item.content}}</view>
       </view>

@@ -12,7 +12,7 @@ Page({
     this.setData({
       tabIndex: dataset.index,
       tabId: dataset.id,
-      contentList: this.data.tablist[dataset.index].module.children
+      contentList: this.data.tablist.length && this.data.tablist[dataset.index].module ? this.data.tablist[dataset.index].module.children : []
     })
   },
   getSwiperImgArr() {
@@ -22,6 +22,7 @@ Page({
         database: 'swiper-image'
       }
     }).then(res => {
+      console.log(res)
       this.setData({
         imgUrls: res.result.data || []
       })
@@ -37,8 +38,18 @@ Page({
       console.log(res)
       this.setData({
         tablist: res.result.data || [],
-        contentList: res.result.data.length && res.result.data[0].module.children.length ? res.result.data[0].module.children : []
+        contentList: res.result.data.length && res.result.data[0].module ? res.result.data[0].module.children : []
       })
+    })
+  },
+  priviewImg(e) {
+    let url = e.currentTarget.dataset.item;
+    let arr = [url]
+    wx.previewImage({
+      urls: arr,
+      success(res) {
+        
+      }
     })
   },
   onLoad: function(options){
