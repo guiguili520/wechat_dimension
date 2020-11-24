@@ -31,11 +31,11 @@
     "selectedColor": "#000000",
     "backgroundColor": "#FFF",
     "list": [{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/login/index",
       "text": "首页"
     }, {
-      "pagePath": "pages/login/index",
-      "text": "我的1"
+      "pagePath": "pages/index/index",
+      "text": "我的"
     }]
   },
   "usingComponents": {
